@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Menu</title>
+</head>
+<body>
+    <div style="margin: 24px;">
+        <nav class="navbar navbar-inverse navbar-stick-static-top">
+            <div class="container">
+                
+                <ul class="nav navbar-nav">
+                    <li>
+                    <a href="index.html">inicio</a>
+                    </li>
+                    <li class="active">
+                    <a href="menu.html">menu</a>
+                    </li>
+                    <li>
+                    <a href="pedido.html">pedido</a>
+                    </li>
+                    <li>
+                    <a href="contacto.html">contacto</a>
+                    </li>
+                    <li>
+                      <a href="calculadorafisica.html">calculadora fisica</a>
+                      </li>
+                </ul>
+            </div>
+         </nav>
+    </div>
+    <titulo>Menu del restaurante</titulo>
+
+<div id="menu"></div>
+<script type="text/javascript">
+    fetch ('menu.json')
+    .then(response => response.json())
+    .then(data =>{
+        const tabla =document.createElement('table');
+        tabla.innerHTML=`
+        <thead>
+            <tr>
+                <th> categoria</th>
+                <th> imagen </th>
+                <th> nombre </th>
+                <th> descripcion </th>
+                <th> precio </th>
+                <th> selecion </th>
+                </tr>
+            </thead>
+            <tbody></tbody>`;
+document.getElementById('menu').appendChild(tabla);
+Object.keys(data).forEach(categoria => {
+    data[categoria].forEach(producto =>{
+const fila=document.createElement('tr');
+fila.innerHTML=`
+<td> ${categoria} </td>
+<td><img src="${producto.imagen}" alt="${producto.name}"></td> 
+<td> ${producto.nombre}</td>
+<td> ${producto.descripcion}</td>
+<td> ${producto.precio}</td>
+<td><input type="checkbox" class="producto" data-precio=$
+    {producto.nombre}</td>`;
+    tabla.querySelector('tbody').appendChild(fila);
+        });
+    });
+
+    const productos=document.querySelectorAll('.producto');
+    productos.forEach(producto=> {
+producto.addEventListener('change', ()=> {
+    let suma =0;
+    producto.forEach(producto => {
+        if(producto.checked){
+            suma+= parseFloat(producto.dataset.precio);
+
+        }
+    });
+    document.getElementById('resultado').innerHTML=`<h1>TOTAL:
+        $ ${suma.toFixed(2)}</h1>`;
+
+
+    });
+   
+})
+    })
+    .catch(error=> console.error(error));
+</script>
+</body>
+</html>

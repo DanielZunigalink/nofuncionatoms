@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <title>Fisica</title>
+</head>
+<body>
+    
+<nav class="navbar" style="background-color: #0597ff;">
+    <!-- Navbar content -->
+  </nav>
+  <div class="jumbotron">
+  <h1 class="display-4" style="color: darkblue;">Fisica 1 </h1>
+  <p class="lead">Desarrollara competencias genericas y disciplinares al abordar aspectos relacionados con los 
+    conceptos fundamentales: Movimiento,Fuerza,Maza e interacciones materia-energia,para reconocer, entender y explicar
+    fenomenos fisicos que se presena en su entorno,pronto soluciones y generar proyectos que son algunos conceptos de la
+    materia. 
+  </p>
+  <form id="formulario">
+  <label for="distancia">Distancia:</label>
+  <input type="text" id="distancia"
+  name="distancia">
+<select id="distanciaUnidad">
+
+
+<option value="metros">Metros</option>
+<option value="pies">pies</option>
+</select>
+<br>
+<label for="Tiempo">Tiempo:</label>
+<input type="text" id="Tiempo"
+name="Tiempo">
+<select id="TiempoUnidad">
+<option value="segundos">segundos</option>
+<option value="horas">Horas</option>
+</select>
+<br>
+<label for="velocidadUnidad">Unidades de velocidad
+</label>
+<select id="velocidadUnidad">
+  <option value="metros_por_segundos">m/s</option>
+  <option value="pies_por_segundos">ft/s</option>
+  <option value="kilometros_por_hora">km/h</option>
+  <option value="millas_por_horas">mph/h</option>
+  </option>
+</select>
+<br>
+<button type="button" value="Calcular" onclick="Calcular()" class="btn
+btn-success">Calcular</form></button>
+</form>
+<br>
+<p id="resultado"></p>
+<p style="color:red">velocidad: <span id="velocidad"></span></p>
+<p style="color: rgb(0, 255, 179);">Aceleracion: <span id="Aceleracion"></span></p>
+<p style="color: rgb(251, 255, 0);">Rapidez: <span id="Rapidez"></span></p>
+</div>
+<script>
+  function Calcular()
+  ///obtener los valores del formulario
+  {
+    const distancia = parseFloat(document.getElementById('distancia').value);
+    const tiempo = parseFloat(document.getElementById('tiempo').value);
+    const  distanciaUnidad = parseFloat(document.getElementById('distanciaUnidad').value)
+    const   velocidad = parseFloat(document.getElementById('velocidad').value)
+    const velocidadUnidad= parseFloat(document.getElementById('velocidadUnidad').value)
+
+///converitr unidades a sistema metrico(SI)
+    
+let distanciaSI = 0;
+let tiempoSI = 0;
+if (distanciaUnidad === 'metros'){
+distanciaSI = distancia;
+}
+else if (disranciaUnidad === 'pies'){
+  distanciaSI = distancia / 3.281;
+}
+if(tiempoUnidad === 'segundos'){
+  tiempoSI=tiempo;
+}
+else if (tiempoUnidad === 'horas'){
+  tiempoSI = tiempo * 3600;
+}
+
+//Calcular la velocidad,cakeracion y (Rapidez)
+
+let Velocidad = 0;
+let Aceleracion = 0;
+let Rapidez= 0;
+
+if (velocidad==='metros_por_segundo'){
+  velocidad = distanciaSI / tiempoSI;
+  Rapidez = velocidad; // esta no es la formula
+Aceleracion = velocidad / tiempoSI;
+
+}
+else if (velocidadUnidad ==='pies_por_segundo'){
+  velocidad = distanciaSI * 3.281 / tiempoSI;
+  Rapidez = velocidad; // esta no es la formula
+Aceleracion = velocidad / tiempoSI;
+
+}
+else if (velocidadUnidad ==='kilometros_por_hora'){
+  velocidad = distanciaSI / 1000 / tiempoSI / 3600;
+  Rapidez = velocidad; // esta no es la formula
+Aceleracion = velocidad / tiempoSI;
+}
+else if (velocidadUnidad ==='millas_por_hora'){
+  velocidad = distanciaSI / 1609 / tiempoSI / 3600;
+  Rapidez = velocidad; // esta no es la formula
+Aceleracion = velocidad / tiempoSI;
+}
+
+//mostrar los resultados
+let resultado = '';
+
+document.getElementById('velocidad').textContent=velocidad.toFixed(2) + '' + velocidadUnidad;
+
+
+document.getElementById('Aceleracion').textContent=Aceleracion.toFixed(2) + '' + Aceleracion;
+
+
+document.getElementById('Rapidez').textContent=rap.toFixed(2) + '' + Rapidez;
+
+
+document.getElementById(resultado).innerHTML=resultado;
+  
+}
+
+</script>
+</body>
+</html>

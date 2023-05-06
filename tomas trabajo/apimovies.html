@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
+    
+    <title>movies</title>
+</head>
+<body>
+    <div style="margin: 24px;">
+        <nav class="navbar navbar-light" style="background-color: #c72424;">
+            <div class="container">
+                
+                <ul class="nav navbar-nav">
+                    <li>
+                        <li>
+                        <a href="index.html">inicio</a>
+                    </li>
+                    <li>
+                        <a href="menu.html">menu</a>
+                    </li>
+                    <li>
+                        <a href="pedido.html">pedido</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">contacto</a>
+                    </li>
+                    <li>
+                        <a href="calculadorafisica.html">caculadora Fisica</a>
+                    </li>
+                    <li class="active">
+<a href="apimovies.html">movies</a>
+                    </li>
+                </ul>
+            </div>
+         </nav>
+    </div>
+    <div class="container">
+      <h1>La pagina De jose Daniel Zúñiga Martínez de películas</h1>
+      <form id="form"
+      <input type="text" id="search" placeholder = "Buscame la película...">
+      <input type="submit" value="Search">
+      </form>
+      <section id="main" class="movies"></section>
+        
+   
+    </div>
+    <script>
+      
+      // esta linea va a definir la url para de la API para obtener la lista de películas
+      const APi ULR = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
+     
+     const IMG_PATH = 'http://image.tmdb.org/t/p/w1280';
+   
+   const SESRCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=';
+   
+   // en las siguientes tres lineas se obtieneos elementos HTML CON los que interacitua rl cosigo
+   const main = document.getElementById('main');
+const form = document.getElementById('form');
+   const search = document.getElementById('search');
+   
+   // esta linea llama a la funcion getmovies para obitener lista de películas iniciales
+   gerMovies(API_URL);
+   // esta funcion utiliza fetch para obtener la información de la API y luego utilizar a aeaut para esperar a que la información sea procesada. finalmente, llama ala funcion showmovies para mostrar la lista de películas en el DOM
+   
+   Function showMovies(movies){
+     main.innerHTML='';
+     movies.forEach(movies) =>{
+     const { title, poster_path,vote_average,overview,release_date} = movie;
+     const movieEL = document.createElement;
+   }
+   }
+   
+    </script>
+    
+    <div id="footer"></div>
+
+
+
+<script>
+  $(Function(){ //buscar la carpeta que esta echa
+    $("#footer").load("/pagina1t-main/")
+  }
+</script>
+</body>
+</html
+>
